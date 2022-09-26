@@ -5,7 +5,7 @@ const usuario = require('../models/usuario');
 const { json } = require('body-parser');
 const app = express();
 
-app.get('/usuarios', function (req, res) {
+app.get('/usuario', function (req, res) {
     let desde = req.query.desde || 0;
     let hasta = req.query.hasta || 5;
 
@@ -35,7 +35,7 @@ app.get('/usuarios', function (req, res) {
 
 });
 
-app.post('/usuarios', function (req, res) {
+app.post('/usuario', function (req, res) {
     let body = req.body;
 
     let usuario = new Usuario({
@@ -66,7 +66,7 @@ app.post('/usuarios', function (req, res) {
 
 });
 
-app.put('/usuarios/:id', function (req, res) {
+app.put('/usuario/:id', function (req, res) {
     let id = req.params.id;
     let body = req.body;
 
@@ -85,7 +85,7 @@ app.put('/usuarios/:id', function (req, res) {
     });
 });
 
-app.delete('/usuarios/:id', function (req, res) {
+app.delete('/usuario/:id', function (req, res) {
     let id = req.params.id;
     Usuario.findByIdAndUpdate(id, {estado:false}, {new:true}, (err, usuarioDB)=>{
         if(err){
